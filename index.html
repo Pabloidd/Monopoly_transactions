@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Монополия - онлайн реализация финансовых транзакций">
+    <meta name="keywords" content="монополия, онлайн, игра, деньги, транзакции">
+    <title>Монополия Онлайн</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+          integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+<div class="page">
+    <header class="header">
+        <h1 class="header__title">Монополия</h1>
+    </header>
+
+    <main class="main">
+        <section class="game">
+            <h2 class="game__title">Финансовые транзакции</h2>
+            <div class="game__load-options" id="gameLoadOptions">
+                <button class="game__load-button" id="continueGame">Продолжить предыдущую игру</button>
+                <button class="game__load-button" id="newGame">Начать новую игру</button>
+            </div>
+
+            <div class="game__board" id="gameBoard" style="display: none;">
+
+                <div class="players">
+                    <h3 class="players__title">Игроки
+                    </h3>
+
+                    <ul class="players__list">
+                        <!-- динамичное добавление игроков-->
+                    </ul>
+                    <button class="players__add-button js-add-player-button">Добавить игрока</button>
+                </div>
+
+                <div class="transaction">
+                    <h3 class="transaction__title">Транзакции
+                        <button id="rulesButton" class="rules-button">Правила транзакций</button>
+                    </h3>
+                    <div class="transaction__form">
+                        <select class="transaction__select js-transaction-from-player">
+                            <option value="" disabled selected>От кого</option>
+                        </select>
+                        <select class="transaction__select js-transaction-to-player">
+                            <option value="" disabled selected>Кому</option>
+                        </select>
+                        <input type="number" class="transaction__input js-transaction-amount"
+                               placeholder="Сумма">
+
+                        <select class="transaction__unit js-transaction-unit">
+                            <option value="1000000">Миллионы монет</option>
+                            <option value="1000">Тысячи монет</option>
+                        </select>
+                        <button class="transaction__button js-transaction-submit">Перевести</button>
+                    </div>
+                    <div class="transaction__history">
+                        <h4 class="transaction__history-title">История действий</h4>
+                        <ul class="transaction__history-list js-transaction-history-list">
+                            <!-- Динамическая история транзакция-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="playerRemovedModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Игрок выбыл из игры</h2>
+                    <p id="playerRemovedMessage"></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p class="footer__copyright">&copy; 2026 Монополия. Все права защищены.</p>
+    </footer>
+
+    <div id="rulesModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Правила Транзакций</h2>
+            <p>Транзакции позволяют игрокам передавать средства друг другу. Вот основные правила:</p>
+            <ul>
+                <li><strong>Сумма:</strong> Введите сумму для перевода.</li>
+                <li><strong>Выбор единицы:</strong> Выберите единицу измерения суммы (миллионы или тысячи монет).</li>
+                <li><strong>Лимит:</strong> У игрока может быть не менее -5,000,000 монет.</li>
+                <li><strong>Недостаточно средств:</strong> Если у игрока недостаточно средств, он переводит всё что осталось и
+                    покидает игру.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+
+</html>
